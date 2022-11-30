@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <changeSet author="pimukov" id="1" runAlways="true">
+        <sqlFile dbms="mysql"
+                 path="sql\delete\clear_database.sql"
+        />
+    </changeSet>
+
+    <changeSet author="pimukov" id="2" runAlways="true">
+        <sqlFile dbms="mysql"
+                 path="sql\create\sozdanie_geek_shop.sql"
+        />
+    </changeSet>
+
+    <changeSet author="pimukov" id="3" runAlways="true">
+        <sqlFile dbms="mysql"
+                 path="sql\insert\data_insert.sql"
+        />
+    </changeSet>
+</databaseChangeLog>
