@@ -34,4 +34,10 @@ public class OrderRepositoryImpl extends AbstractRepository implements OrderRepo
     public Order findOrderById(Integer orderId) {
         return entityManager.find(Order.class, orderId);
     }
+
+    @Override
+    public List<Order> getOrders() {
+        return entityManager.createQuery("select order from Order order where  order.isDeleted = false ", Order.class)
+                .getResultList();
+    }
 }

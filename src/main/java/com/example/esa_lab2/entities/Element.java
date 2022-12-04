@@ -1,5 +1,6 @@
 package com.example.esa_lab2.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -28,6 +29,7 @@ public class Element implements Serializable {
     private Integer code;
 
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = Columns.ORDER, nullable = false)
     private Order order;

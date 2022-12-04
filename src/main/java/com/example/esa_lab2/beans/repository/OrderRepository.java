@@ -12,4 +12,6 @@ public interface OrderRepository extends Repository {
     List<Order> getOrdersByUserId(Integer userId);
 
     Order findOrderById(Integer orderId);
+
+    List<Order> getOrders();
 }
