@@ -2,17 +2,11 @@ package com.example.esa_lab2.controllers;
 
 import com.example.esa_lab2.beans.service.impl.ElementServiceImpl;
 import com.example.esa_lab2.beans.service.impl.OrderServiceImpl;
-import com.example.esa_lab2.entities.Category;
 import com.example.esa_lab2.entities.Element;
 import com.example.esa_lab2.entities.Order;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import java.io.ByteArrayInputStream;
@@ -37,7 +35,7 @@ public class OrderController {
     private OrderServiceImpl orderService;
 
     @GetMapping("/offerOrder")
-    public void offerOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void offerOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Order order = orderService.findOrderById((Integer) req.getSession().getAttribute("currentOrderId"));
         int totalCost = 0;
         for (Element element : order.getElements()) {
@@ -53,7 +51,7 @@ public class OrderController {
     }
 
     @GetMapping("/markOrderReady")
-    public void markOrderReady(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void markOrderReady(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Order order = orderService.findOrderById(Integer.parseInt(req.getParameter("orderId")));
         order.setStatus("Issued");
         orderService.save(order);

@@ -5,13 +5,13 @@ import com.example.esa_lab2.dto.ShoppingCardElementRecord;
 import com.example.esa_lab2.entities.Element;
 import com.example.esa_lab2.entities.Order;
 import com.example.esa_lab2.entities.Product;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

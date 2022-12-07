@@ -6,12 +6,11 @@ import com.example.esa_lab2.beans.service.impl.ClientServiceImpl;
 import com.example.esa_lab2.entities.Admin;
 import com.example.esa_lab2.entities.Category;
 import com.example.esa_lab2.entities.Client;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,7 +36,7 @@ public class AuthorizationController {
 
 
     @GetMapping("/logIn")
-    protected void logIn(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void logIn(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.getSession().invalidate();
         String login = req.getParameter("login");
         String password = req.getParameter("password");
