@@ -1,9 +1,16 @@
 package com.example.esa_lab2.entities;
 
 
-import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
 
 @MappedSuperclass
+@ToString
+@Getter
+@Setter
 public class EntityClass {
 
     private interface Columns {
@@ -19,29 +26,4 @@ public class EntityClass {
 
     @Column(name = Columns.IS_DELETED, nullable = false)
     private boolean isDeleted = false;
-
-
-    public boolean getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "EntityClass{" +
-                "id=" + id +
-                ", isDeleted=" + isDeleted +
-                '}';
-    }
 }

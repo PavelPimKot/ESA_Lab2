@@ -1,13 +1,19 @@
 package com.example.esa_lab2.entities;
 
-import com.example.esa_lab2.dto.ProductRecord;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = Product.TABLE_NAME)
+@ToString
+@Getter
+@Setter
 public class Product extends EntityClass {
 
     public final static String TABLE_NAME = "Product";
@@ -45,75 +51,4 @@ public class Product extends EntityClass {
 
     @Column(name = Columns.PICTURE, nullable = false)
     private String picture;
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category categoryId) {
-        this.category = categoryId;
-    }
-
-    public Section getSection() {
-        return section;
-    }
-
-    public void setSection(Section sectionId) {
-        this.section = sectionId;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                super.toString() +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", count=" + count +
-                ", category=" + category +
-                ", section=" + section +
-                ", picture='" + picture + '\'' +
-                '}';
-    }
 }
