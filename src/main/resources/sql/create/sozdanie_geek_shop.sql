@@ -96,6 +96,14 @@ CREATE TABLE `Review`
     `isDeleted`  BOOLEAN      NOT NULL default 0,
     PRIMARY KEY (`ID`)
 );
+CREATE TABLE `ENTITY_CHANGE_LOG`
+(
+    `ID`         INT          NOT NULL AUTO_INCREMENT UNIQUE,
+    `ENTITY_ID`  INT          NOT NULL,
+    `CHANGE_TYPE`    VARCHAR(255) NOT NULL,
+    `CHANGE_DATE`  DATE         NOT NULL,
+    PRIMARY KEY (`ID`)
+);
 ALTER TABLE `Product`
     ADD CONSTRAINT `Product_fk0` FOREIGN KEY (`section_ID`) REFERENCES `Section` (`id`);
 ALTER TABLE `Product`

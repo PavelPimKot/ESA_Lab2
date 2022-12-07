@@ -7,3 +7,4 @@ drop table section;
 drop table orders;
 drop table client;
 drop table category;
+drop table ENTITY_CHANGE_LOG;
