@@ -2,12 +2,13 @@ package com.example.esa_lab2.beans.repository.impl;
 
 import com.example.esa_lab2.beans.repository.ElementRepository;
 import com.example.esa_lab2.entities.Element;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service(value = "elementRepository")
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+@Repository(value = "elementRepository")
 @Transactional
 public class ElementRepositoryImpl implements ElementRepository {
     @PersistenceContext
@@ -15,7 +16,7 @@ public class ElementRepositoryImpl implements ElementRepository {
 
     @Override
     public void save(Element element) {
-       entityManager.merge(element);
+        entityManager.merge(element);
     }
 
     @Override

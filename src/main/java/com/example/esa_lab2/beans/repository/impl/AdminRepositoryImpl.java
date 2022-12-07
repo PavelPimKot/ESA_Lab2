@@ -2,12 +2,12 @@ package com.example.esa_lab2.beans.repository.impl;
 
 import com.example.esa_lab2.beans.repository.AdminRepository;
 import com.example.esa_lab2.entities.Admin;
-import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-@Service(value = "adminRepository")
+@Repository(value = "adminRepository")
 @Transactional
 public class AdminRepositoryImpl extends AbstractRepository implements AdminRepository {
     @Override

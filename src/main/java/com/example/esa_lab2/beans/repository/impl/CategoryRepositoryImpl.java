@@ -2,12 +2,12 @@ package com.example.esa_lab2.beans.repository.impl;
 
 import com.example.esa_lab2.beans.repository.CategoryRepository;
 import com.example.esa_lab2.entities.Category;
-import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-@Service(value = "categoryRepository")
+@Repository(value = "categoryRepository")
 @Transactional
 public class CategoryRepositoryImpl extends AbstractRepository implements CategoryRepository {
     @Override

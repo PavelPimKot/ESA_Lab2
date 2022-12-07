@@ -1,14 +1,14 @@
 package com.example.esa_lab2.beans.repository.impl;
 
 import com.example.esa_lab2.beans.repository.StatisticRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
-@Service(value = "statisticRepository")
+@Repository(value = "statisticRepository")
 @Transactional
 public class StatisticRepositoryImpl implements StatisticRepository {
     @PersistenceContext
