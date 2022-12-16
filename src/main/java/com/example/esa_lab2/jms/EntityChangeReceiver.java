@@ -1,5 +1,6 @@
 package com.example.esa_lab2.jms;
 
+import com.example.esa_lab2.beans.service.impl.EmailSenderServiceImpl;
 import com.example.esa_lab2.beans.service.impl.EntityChangeLogServiceImpl;
 import com.example.esa_lab2.entities.EntityChangeLog;
 import com.example.esa_lab2.jms.dto.EntityChangeRecord;
@@ -12,8 +13,11 @@ import java.time.LocalDate;
 public class EntityChangeReceiver {
     private EntityChangeLogServiceImpl entityChangeLogService;
 
-    public EntityChangeReceiver(EntityChangeLogServiceImpl entityChangeLogService) {
+    private EmailSenderServiceImpl emailSenderService;
+
+    public EntityChangeReceiver(EntityChangeLogServiceImpl entityChangeLogService, EmailSenderServiceImpl emailSenderService) {
         this.entityChangeLogService = entityChangeLogService;
+        this.emailSenderService = emailSenderService;
     }
 
     @JmsListener(destination = "entityChange", containerFactory = "myFactory")
@@ -23,5 +27,6 @@ public class EntityChangeReceiver {
         entityChangeLog.setChangeDate(LocalDate.now());
         entityChangeLog.setChangeType(entityChangeRecord.getChangeType());
         entityChangeLogService.save(entityChangeLog);
+        emailSenderService.sendSimpleEmail("irauraltseva@gmail.com", "entityChange", entityChangeLog.toString());
     }
 }
