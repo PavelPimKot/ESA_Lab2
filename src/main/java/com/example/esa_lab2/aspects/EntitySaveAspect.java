@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.jms.JMSException;
+import javax.jms.Topic;
 import java.util.Arrays;
 
 @Aspect
@@ -18,9 +20,12 @@ public class EntitySaveAspect {
 
     private JmsTemplate jmsTemplate;
 
+    private Topic topic;
+
     @Autowired
-    public EntitySaveAspect(JmsTemplate jmsTemplate) {
+    public EntitySaveAspect(JmsTemplate jmsTemplate) throws JMSException {
         this.jmsTemplate = jmsTemplate;
+        this.topic = jmsTemplate.getConnectionFactory().createConnection().createSession().createTopic("entityChange");
     }
 
     @Around("@annotation(com.example.esa_lab2.annotations.SaveEntityLoggable)")
@@ -34,7 +39,7 @@ public class EntitySaveAspect {
         }
         EntityClass result = (EntityClass) proceedingJoinPoint.proceed();
         record.setEntityId(result.getId());
-        jmsTemplate.convertAndSend("entityChange", record);
+        jmsTemplate.convertAndSend(topic, record);
         return result;
     }
 }

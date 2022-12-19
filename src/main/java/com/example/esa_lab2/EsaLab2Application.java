@@ -42,14 +42,6 @@ public class EsaLab2Application {
         return converter;
     }
 
-    @Bean
-    public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory,
-                                                    DefaultJmsListenerContainerFactoryConfigurer configurer) {
-        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        configurer.configure(factory, connectionFactory);
-        return factory;
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(EsaLab2Application.class, args);
     }
